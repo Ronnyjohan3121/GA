@@ -7,7 +7,7 @@ library(GA)             # Importa la biblioteca GA para usar funciones de algori
 
 # Función de evaluación para un escenario en específico
 evaluate <- function(solution) {
-  return(-sum(solution))  # Ejemplo simple, debes personalizar esta función según las necesidades de un escenario específico
+  return(-sum(solution))  # Ejemplo simple, se debe personalizar esta función según las necesidades de un escenario o unos escenarios específicos
 }
 
 # Configuración de los parámetros del algoritmo genético
