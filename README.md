@@ -1,52 +1,32 @@
-# GA
-Creación de un algoritmo genetico , como selección de metaheurística para la solución de un problema de compra y venta de energía eléctrica
+# Algoritmo Genético para Problema de Gestión Energética
 
-# Instalar e importar la biblioteca 'GA' para algoritmos genéticos (Metaheurística Definida)
-install.packages("GA")  # Instala la biblioteca GA si aún no está instalada
-library(GA)             # Importa la biblioteca GA para usar funciones de algoritmos genéticos
+Este repositorio contiene la implementación de un algoritmo genético en R para abordar un problema de gestión energética. El algoritmo genético busca optimizar la operación de sistemas de generación y almacenamiento de energía en un entorno de prosumidores.
 
-# Función de evaluación para un escenario en específico
-evaluate <- function(solution) {
-  return(-sum(solution))  # Ejemplo simple, se debe personalizar esta función según las necesidades de un escenario o unos escenarios específicos
-}
+## Descripción del Problema
 
-# Configuración de los parámetros del algoritmo genético
-ga_config <- function() {
-  return(list(
-    popSize = 50,      # Tamaño de la población
-    pcrossover = 0.8,  # Probabilidad de cruce
-    pmutation = 0.1,   # Probabilidad de mutación
-    maxiter = 100,     # Número máximo de generaciones
-    run = 100,         # Número máximo de evaluaciones de la función objetivo
-    crossover = 2,     # Tipo de operador de cruce (2 para cruce uniforme)
-    monitor = FALSE    # No mostrar información de todo el progreso (puedes cambiar a TRUE si deseas ver detalles)
-    # Otros parámetros...
-  ))
-}
+El problema consiste en diseñar un algoritmo de gestión energética que permita una operación óptima del sistema de generación y almacenamiento de energía, considerando objetivos económicos, ambientales y otros indicadores.
 
-# Ejecutar el algoritmo genético
-run_genetic_algorithm <- function() {
-  # Definir el espacio de búsqueda y restricciones
-  search_space <- matrix(c(0, 100), nrow = 1, ncol = 2)  # Ejemplo simple, ajusta según las variables de decisión y rangos, para el problema doctorando (5 variables de decisión para los prosumers - 4 más no consideradas principales)
+## Configuración del Algoritmo Genético
 
-  # Ejecutar el algoritmo genético
-  result <- ga(type = "real-valued",  # Tipo de problema (variables continuas)
-               fitness = evaluate,     # Función de evaluación definida por el usuario
-               lower = rep(search_space[1, ], times = 2),  # Límites inferiores del espacio de búsqueda
-               upper = rep(search_space[1, ], times = 2),  # Límites superiores del espacio de búsqueda
-               popSize = 50,            # Tamaño de la población
-               pcrossover = 0.8,        # Probabilidad de cruce
-               pmutation = 0.1,         # Probabilidad de mutación
-               maxiter = 100,           # Número máximo de generaciones
-               run = 100,               # Número máximo de evaluaciones de la función objetivo
-               crossover = 2,           # Tipo de operador de cruce (2 para cruce uniforme)
-               monitor = FALSE)         # No mostrar información de todo el progreso
+El algoritmo genético se implementa utilizando la biblioteca GA en R. Los parámetros clave del algoritmo, como el tamaño de la población, la probabilidad de cruce y mutación, se pueden configurar en el archivo `run_genetic_algorithm.R`.
 
-  # Devolver los resultados
-  return(result)
-}
+## Estructura del Repositorio
 
-# Ejemplo de ejecución del algoritmo genético
-result <- run_genetic_algorithm()
-print(result)
+- `run_genetic_algorithm.R`: Archivo principal que contiene la implementación del algoritmo genético y su ejecución.
+- `README.md`: Este archivo que proporciona información sobre el proyecto.
+
+## Ejecución del Algoritmo
+
+1. Asegúrate de tener R y la biblioteca GA instalados.
+2. Ejecuta el archivo `run_genetic_algorithm.R` para ejecutar el algoritmo genético.
+
+## Resultados
+
+Los resultados del algoritmo genético, incluida la mejor solución encontrada y las estadísticas de la población, se muestran al final de la ejecución.
+
+## Contribuciones y Problemas
+
+Siéntete libre de contribuir a este proyecto o informar sobre problemas abriendo un problema en el repositorio.
+
+¡Gracias por tu interés en este proyecto!
 
